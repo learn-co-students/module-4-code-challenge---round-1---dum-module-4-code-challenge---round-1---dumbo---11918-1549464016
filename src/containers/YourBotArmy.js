@@ -9,7 +9,7 @@ class YourBotArmy extends React.Component {
       return this.props.yourBotArmyIds.includes(bot.id)
     })
     let bots = filteredBots.map(bot => {
-			return <BotCard robotClickHandler={this.props.botDischarge} bot={bot} />
+			return <BotCard cardClickHandler={this.props.botDischarge} bot={bot} />
 		})
     return (
       <div className="ui segment inverted olive bot-army">

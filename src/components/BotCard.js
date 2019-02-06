@@ -20,7 +20,7 @@ const BotCard = props => {
   }
 
   function clickHandler(){
-    props.robotClickHandler(bot.id)
+    props.cardClickHandler(bot.id)
   }
 
 

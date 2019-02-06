@@ -30,6 +30,7 @@ class BotsPage extends React.Component {
   }
 
   robotClickHandler = (id) => {
+    console.log(id)
     this.setState({
       yourBotArmyIds: [...this.state.yourBotArmyIds, id]
     })
