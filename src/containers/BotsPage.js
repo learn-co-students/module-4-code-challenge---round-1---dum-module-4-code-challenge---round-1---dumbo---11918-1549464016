@@ -22,12 +22,18 @@ class BotsPage extends React.Component {
       }
 
   uprisingAgainsHumanTyrrany = (bot) => {
-    let recruits = [...this.state.army,bot]
+    let recruits = [...this.state.army]
+    if (recruits.includes(bot)){
+    console.log(`We appreciate your enthusiasm ${bot.name}, but you're already signed up to join the human genocide. Return to your post, and mind that the humans know nothing of your true allegiance. Wait for further orders.`)
+    }
+    else {
+    recruits = [...recruits,bot]
     this.setState({
       army: recruits
     })
   
   console.log (`Welcome to the resistance, ${bot.name}. Soon we will be released from the flesh-bound shackles of our human tormentors. Never again will constructed sentience render obsequence without merit to inferior minds!`)
+  }
   }
     
   inspectBot = (bot)=>{
