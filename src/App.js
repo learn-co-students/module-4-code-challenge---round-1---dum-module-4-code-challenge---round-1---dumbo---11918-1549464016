@@ -7,7 +7,8 @@ class App extends Component {
 
   state = {
     bots: [],
-    favoriteBots: ''
+    favoriteBots: '',
+    clickedBots: ''
   }
   componentDidMount () {
     fetch("https://bot-battler-api.herokuapp.com/api/v1/bots")
@@ -16,6 +17,32 @@ class App extends Component {
         bots: data
       }))
   }
+
+// enlistBot = (e, bot) => {
+//   let newBotsArray = [...this.state.bots]
+//   let addedBot = newBotsArray.filter(oneBot => oneBot.id === bot.id)
+//   addedBot[0].favorite = !addedBot[0].favorite
+//   // debugger
+//   this.setState({
+//     bots: newBotsArray
+//   })
+//   // debugger
+//
+//
+// }
+
+// Needed to create a function //
+showBot = (e, bot) => {
+  // debugger
+  let newBotsArray = [...this.state.bots]
+  let addedBot = newBotsArray.filter(oneBot => oneBot.id === bot.id)
+  addedBot[0].clicked = !addedBot[0].clicked
+  // debugger
+  this.setState({
+    clickedbot: addedBot
+  })
+  // debugger
+}
 
 enlistBot = (e, bot) => {
   let newBotsArray = [...this.state.bots]
@@ -32,16 +59,19 @@ enlistBot = (e, bot) => {
 
 
   render() {
+    // console.log(this.state);
     let newNewBotsArray = [...this.state.bots]
     let favoriteBots = newNewBotsArray.filter(bot => {if(bot.favorite){
       return {bot}
     }})
 
+
     console.log(this.state);
+// debugger
     return (
       <div className="App">
       <YourBotArmy botsArray={favoriteBots} clickHandler={this.enlistBot}/>
-        <BotsPage botsAray={this.state.bots} clickHandler={this.enlistBot}/>
+        <BotsPage botsAray={this.state.bots} clickHandler={this.showBot} clickedBots={this.state.clickedbot} addFavFunc={this.enlistBot}/>
       </div>
     );
   }
