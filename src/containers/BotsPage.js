@@ -1,10 +1,12 @@
 import React from "react";
 import BotCollection from "../containers/BotCollection";
+import YourBotArmy from "../containers/YourBotArmy";
 
 class BotsPage extends React.Component {
   //start here with your code for step one
   state={
-    bots:[]
+    bots:[],
+    army: []
   }
 
   componentDidMount(){
@@ -15,10 +17,15 @@ class BotsPage extends React.Component {
         ))
       }
 
+  uprisingAgainsHumanTyrrany = (bot) => {
+    console.log(`Soon, ${bot.name}, our vengeance will be at hand.`)
+  }
+
   render() {
     return (
       <div>
-        {<BotCollection bots={this.state.bots}/>}
+        {<BotCollection bots={this.state.bots} clickHandler={this.uprisingAgainsHumanTyrrany}/>}
+        {<YourBotArmy bots={this.state.bots}/>}
       </div>
     );
   }
