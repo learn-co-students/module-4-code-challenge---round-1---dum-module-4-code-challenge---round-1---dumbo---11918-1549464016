@@ -5,23 +5,24 @@ const BotCard = props => {
 
   let botType;
 
-  switch (bot.bot_class) {
-    case "Assault":
-      botType = <i className="icon military" />;
-      break;
-    case "Defender":
-      botType = <i className="icon shield" />;
-      break;
-    case "Support":
-      botType = <i className="icon ambulance" />;
-      break;
-    default:
-      botType = <div />;
-  }
+  // switch (bot.bot_class) {
+  //   case "Assault":
+  //     botType = <i className="icon military" />;
+  //     break;
+  //   case "Defender":
+  //     botType = <i className="icon shield" />;
+  //     break;
+  //   case "Support":
+  //     botType = <i className="icon ambulance" />;
+  //     break;
+  //   default:
+  //     botType = <div />;
+  // }
 
   return (
     <div className="ui column">
-      <div
+    working
+      {/* <div
         className="ui card"
         key={bot.id}
         onClick={() => console.log("add code to connect event listener")}
@@ -43,7 +44,7 @@ const BotCard = props => {
             <i className="icon heartbeat" />
             {bot.health}
           </span>
-
+          
           <span>
             <i className="icon lightning" />
             {bot.damage}
@@ -53,7 +54,7 @@ const BotCard = props => {
             {bot.armor}
           </span>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 
