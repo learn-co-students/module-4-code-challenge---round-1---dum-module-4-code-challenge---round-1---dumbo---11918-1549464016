@@ -6,6 +6,7 @@ class YourBotArmy extends React.Component {
   
 
   render(){
+    
     let bots = this.props.bots.map(bot=> <BotCard key={bot.id} bot={bot}/>)
     return (
       <div className="ui segment inverted olive bot-army">

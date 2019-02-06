@@ -1,12 +1,16 @@
 import React from "react";
 import BotCollection from "../containers/BotCollection";
 import YourBotArmy from "../containers/YourBotArmy";
+import BotSpecs from "../components/BotSpecs";
+
 
 class BotsPage extends React.Component {
   //start here with your code for step one
   state={
     bots:[],
-    army: []
+    army: [],
+    clicked: false,
+    inspectBot: ""
   }
 
   componentDidMount(){
@@ -25,11 +29,27 @@ class BotsPage extends React.Component {
   
   console.log (`Welcome to the resistance, ${bot.name}. Soon we will be released from the flesh-bound shackles of our human tormentors. Never again will constructed sentience render obsequence without merit to inferior minds!`)
   }
+    
+  inspectBot = (bot)=>{
+    console.log (bot.name)
+		this.setState({
+			clicked: !this.state.clicked,
+			inspectBot: bot
+    })
+  }
+
+  doneInspectBot = () =>{
+    this.setState({
+      clicked: !this.state.clicked,
+      inspectBot: ""
+    })
+  }
 
   render() {
     return (
       <div>
-        {<BotCollection bots={this.state.bots} clickHandler={this.uprisingAgainsHumanTyrrany}/>}
+        {this.state.clicked ? <BotSpecs bot={this.state.inspectBot} enlistBot={this.uprisingAgainsHumanTyrrany} doneInspectBot={this.doneInspectBot}/>
+        :<BotCollection bots={this.state.bots} clickHandler={this.inspectBot}/>}
         {<YourBotArmy bots={this.state.army}/>}
       </div>
     );
