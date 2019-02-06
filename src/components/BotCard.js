@@ -1,8 +1,12 @@
 import React from "react";
 
 const BotCard = props => {
+  // console.log('bot card', props)
   const { bot } = props;
-
+  const botObj = bot
+  const botID = bot.id
+  const clickHandler = bot.clickHandler
+  // console.log(clickHandler);
   let botType;
 
   switch (bot.bot_class) {
@@ -24,7 +28,8 @@ const BotCard = props => {
       <div
         className="ui card"
         key={bot.id}
-        onClick={() => console.log("add code to connect event listener")}
+        onClick={() => clickHandler(botObj, botID)}
+        // onClick={() => console.log(botObj, botID)}
       >
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />
@@ -52,6 +57,7 @@ const BotCard = props => {
             <i className="icon shield" />
             {bot.armor}
           </span>
+
         </div>
       </div>
     </div>
