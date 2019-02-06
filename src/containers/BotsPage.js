@@ -5,7 +5,9 @@ import YourBotArmy from "./YourBotArmy"
 class BotsPage extends React.Component {
   //start here with your code for step one
   state = {
-    robots: []
+    robots: [],
+    clicked: false,
+    clickedRobot: []
   }
 
   componentDidMount(){
@@ -16,12 +18,20 @@ class BotsPage extends React.Component {
     }))
   }
 
+  clickHandler = (bot) => {
+    let newRobots = [...this.state.robots]
+    let clickedRobot = newRobots.filter(robot => robot.id === bot.id)
+    this.setState({
+      clickedRobot: clickedRobot
+    })
+  }
+
   render() {
-    //console.log(this.state.robots)
+    console.log(this.state.clickedRobots)
     return (
       <div>
-        <div>{ <YourBotArmy robots={this.state.robots}/> }</div>
-        <div>{ <BotCollection robots={ this.state.robots } /> }</div>
+        <div>{ <YourBotArmy clickedRobot={this.state.clickedRobot}/>}</div>
+        <div>{ <BotCollection robots={ this.state.robots } clickHandler={this.clickHandler}/> }</div>
       </div>
     );
   }
