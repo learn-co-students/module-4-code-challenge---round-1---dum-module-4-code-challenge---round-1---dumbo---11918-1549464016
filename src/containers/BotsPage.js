@@ -2,13 +2,16 @@ import React from "react";
 import BotCollection from "./BotCollection"
 import YourBotArmy from "./YourBotArmy"
 import BotSpecs from "../components/BotSpecs"
+import SearchBar from "../components/SearchBar"
 
 class BotsPage extends React.Component {
   state = {
     robots: [],
+    filteredBots: [],
     army: [],
     specs: false,
-    selectedBot: {}
+    selectedBot: {},
+    filter: false
   }
 
   componentDidMount() {
@@ -31,21 +34,35 @@ class BotsPage extends React.Component {
     }
   }
 
+  activateFilter = () => {
+    this.setState({filter: !this.state.filter})
+  }
+
+  filterBots = (e) => {
+    if(this.state.filter) {
+      const filteredBots = this.state.robots.filter(bot => bot.bot_class === e.target.value)
+      this.setState({filteredBots})
+    }
+  }
+
   fetchs = () => {
     const url = "https://bot-battler-api.herokuapp.com/api/v1/bots"
     fetch(url)
     .then(res => res.json())
-    .then(robots => this.setState({robots}))
+    .then(robots => this.setState({robots, filteredBots: robots}))
   }
 
   render() {
-    const {robots, army, specs, selectedBot} = this.state
+    const {robots, army, specs, selectedBot, filter, filteredBots} = this.state
     return (
       <div>
+        <div align="center">
+          <SearchBar filter={this.filterBots} check={filter} activateFilter={this.activateFilter}/>
+        </div>
         <YourBotArmy army={army}/>
         {specs
           ? <BotSpecs bot={selectedBot} goBack={this.reset} addToArmy={this.addToArmy}/>
-          : <BotCollection robots={robots} selectBot={this.selectBot} />
+          : <BotCollection robots={filter ? filteredBots : robots} selectBot={this.selectBot} />
         }
       </div>
     );
