@@ -14,11 +14,10 @@ class App extends Component {
     let newArr = []
     let armyBots = [...this.state.allRobots];
     let myBot = armyBots.find(bot => bot.id === event.id)
-    newArr.push(myBot)
+    newArr = [...newArr, myBot]
     this.setState({
       botArmy: [...newArr, myBot]
     })
-    // return armyBots
   }
 
   componentDidMount = () => {

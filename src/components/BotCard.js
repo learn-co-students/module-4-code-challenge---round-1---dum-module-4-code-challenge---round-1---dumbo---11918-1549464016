@@ -26,7 +26,6 @@ class BotCard extends Component {
         name: {bot.name}
         <div
           className="ui card"
-          key={bot.id}
           onClick={() => this.props.handleClick(this.props.bot)}
         >
           <div className="image">
