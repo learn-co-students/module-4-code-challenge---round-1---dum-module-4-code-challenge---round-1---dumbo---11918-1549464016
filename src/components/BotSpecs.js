@@ -1,8 +1,10 @@
 import React from "react";
-import BotSpecs from "./BotSpecs"
+
 
 const BotSpecs = props => {
   let { bot } = props;
+  console.log("botspec props are ", props)
+  console.log("---")
 
   let botType;
 

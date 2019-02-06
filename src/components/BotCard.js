@@ -1,8 +1,10 @@
 import React from "react";
+import BotSpecs from "./BotSpecs"
 
 const BotCard = props => {
   const { bot } = props;
-
+  console.log("BotCard props are", props)
+  console.log("---")
   let botType;
 
   switch (bot.bot_class) {
@@ -20,6 +22,8 @@ const BotCard = props => {
   }
 
   return (
+    <div>
+    <BotSpecs bot = {props.bot} />
     <div className="ui column">
       <div
         className="ui card"
@@ -54,6 +58,7 @@ const BotCard = props => {
           </span>
         </div>
       </div>
+    </div>
     </div>
   );
 
