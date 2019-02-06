@@ -2,10 +2,23 @@ import React, { Component } from "react";
 import BotsPage from "./containers/BotsPage";
 import "./App.css";
 
+
 class App extends Component {
 
   state = {
-    allRobots: []
+    allRobots: [],
+    botArmy: []
+  }
+
+  handleClick = (event) => {
+    let newArr = []
+    let armyBots = [...this.state.allRobots];
+    let myBot = armyBots.find(bot => bot.id === event.id)
+    newArr.push(myBot)
+    this.setState({
+      botArmy: [...newArr, myBot]
+    })
+    // return armyBots
   }
 
   componentDidMount = () => {
@@ -22,7 +35,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <BotsPage robots={this.state.allRobots}/>
+        <BotsPage 
+          robots={this.state.allRobots} 
+          botArmy={this.state.botArmy}
+          handleClick={this.handleClick}
+        />
       </div>
     );
   }

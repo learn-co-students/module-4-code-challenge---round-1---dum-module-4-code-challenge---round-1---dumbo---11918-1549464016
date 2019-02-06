@@ -1,5 +1,6 @@
 import React from "react";
 import BotCollection from "./BotCollection"
+import YourBotArmy from "./YourBotArmy"
 
 class BotsPage extends React.Component {
   //start here with your code for step one
@@ -7,7 +8,9 @@ class BotsPage extends React.Component {
   render() {
     return (
       <div>
-        <BotCollection robots={this.props.robots}/>
+        <YourBotArmy botArmy={this.props.botArmy}/>
+        
+        <BotCollection robots={this.props.robots} handleClick={this.props.handleClick}/>
       </div>
     );
   }
