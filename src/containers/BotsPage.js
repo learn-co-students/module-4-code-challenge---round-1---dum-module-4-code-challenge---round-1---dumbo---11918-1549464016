@@ -1,6 +1,7 @@
 import React from "react";
 import BotCollection from '../containers/BotCollection'
 import YourBotArmy from '../containers/YourBotArmy'
+import BotSpecs from '../components/BotSpecs'
 
 class BotsPage extends React.Component {
   //start here with your code for step one
@@ -37,8 +38,11 @@ class BotsPage extends React.Component {
     })
   }
 
+
+// started working on refactor which broke some stuff
+// i have a previous commit
   showSpec = (botObj) => {
-    console.log("show deets");
+    return botObj
   }
 
 
@@ -52,6 +56,8 @@ class BotsPage extends React.Component {
           bots={this.state.botList}
           getBot={this.getBot}
           showSpec={this.showSpec}/>
+        <BotSpecs
+          bots={this.showSpec} />
       </div>
     );
   }
