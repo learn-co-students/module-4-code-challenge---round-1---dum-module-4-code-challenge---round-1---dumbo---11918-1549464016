@@ -45,6 +45,12 @@ class BotsPage extends React.Component {
     }
   }
 
+  removeFromArmy = (bot) => {
+    const { army } = this.state
+    let newArmy = army.filter(robot => robot.id !== bot.id)
+    this.setState({army: newArmy})
+  }
+
   fetchs = () => {
     const url = "https://bot-battler-api.herokuapp.com/api/v1/bots"
     fetch(url)
@@ -59,7 +65,7 @@ class BotsPage extends React.Component {
         <div align="center">
           <SearchBar filter={this.filterBots} check={filter} activateFilter={this.activateFilter}/>
         </div>
-        <YourBotArmy army={army}/>
+        <YourBotArmy army={army} remove={this.removeFromArmy}/>
         {specs
           ? <BotSpecs bot={selectedBot} goBack={this.reset} addToArmy={this.addToArmy}/>
           : <BotCollection robots={filter ? filteredBots : robots} selectBot={this.selectBot} />
