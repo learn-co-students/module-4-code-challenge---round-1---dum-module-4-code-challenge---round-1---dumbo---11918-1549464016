@@ -20,7 +20,8 @@ class BotsPage extends React.Component {
     //console.log(this.state.robots)
     return (
       <div>
-        {<BotCollection robots={this.state.robots} />}
+        <div>{ <BotCollection robots={ this.state.robots } /> }</div>
+        <div>{ <YourBotArmy robots={this.state.robots}/> }</div>
       </div>
     );
   }
