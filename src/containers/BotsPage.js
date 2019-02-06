@@ -1,11 +1,14 @@
 import React from "react";
 import BotCollection from "./BotCollection";
 import YourBotArmy from "./YourBotArmy";
+import BotSpecs from "../components/BotSpecs";
 
 class BotsPage extends React.Component {
   state = {
     bots: [],
-    myBots: []
+    myBots: [],
+    specView: false,
+    currentBot: null
   }
 
   addBot = (bot) => {
@@ -26,12 +29,28 @@ class BotsPage extends React.Component {
       (bots) => (this.setState({bots}))
     );
   }
+  toggleCurrentView = () => {
+    let specView = !this.state.specView;
+    this.setState({specView});
+  }
+  setCurrentBot = (currentBot) => {
+    this.setState({currentBot});
+    this.toggleCurrentView();
+  }
+
+  displayCurrentView(specsView) {
+    if (specsView) {
+      return <BotSpecs bot={this.state.currentBot} handleLibrary={{enlist:this.addBot, back: this.toggleCurrentView}}/>
+    } else {
+      return <BotCollection bots={this.state.bots} handleClick={this.setCurrentBot}/>
+    }
+  }
 
   render() {
     return (
       <div>
-        <BotCollection bots={this.state.bots} handleClick={this.addBot}/>
         <YourBotArmy bots={this.state.myBots} handleClick={this.removeBot}/>
+        {this.displayCurrentView(this.state.specView)}
       </div>
     );
   }
