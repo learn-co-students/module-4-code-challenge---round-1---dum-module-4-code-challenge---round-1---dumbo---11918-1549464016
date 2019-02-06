@@ -26,11 +26,17 @@ class BotsPage extends React.Component {
     })
   }
 
+  toggleClick = () => {
+    this.setState({
+      clicked: !this.state.clicked
+    })
+  }
+  
   render() {
     console.log(this.state.clickedRobots)
     return (
       <div>
-        <div>{ <YourBotArmy clickedRobot={this.state.clickedRobot}/>}</div>
+        <div>{ <YourBotArmy clickedRobot={this.state.clickedRobot} />}</div>
         <div>{ <BotCollection robots={ this.state.robots } clickHandler={this.clickHandler}/> }</div>
       </div>
     );
