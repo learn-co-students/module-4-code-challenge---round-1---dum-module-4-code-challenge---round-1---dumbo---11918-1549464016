@@ -1,4 +1,5 @@
 import React from "react";
+import BotSpecs from "./BotSpecs"
 
 const BotSpecs = props => {
   let { bot } = props;
