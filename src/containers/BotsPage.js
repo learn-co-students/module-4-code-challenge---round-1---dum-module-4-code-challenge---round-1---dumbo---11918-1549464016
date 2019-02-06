@@ -8,7 +8,27 @@ class BotsPage extends React.Component {
     bots: [],
     myBots: [],
     specView: false,
-    currentBot: null
+    currentBot: null,
+    searchTerm: ""
+  }
+  componentDidMount() {
+    this.getData(
+      "https://bot-battler-api.herokuapp.com/api/v1/bots",
+      (bots) => (this.setState({bots}))
+    );
+  }
+  getData(url, cb) {
+    fetch(url).then(res => res.json()).then(cb);
+  }
+  displayCurrentView(specsView) {
+    if (specsView) {
+      return <BotSpecs bot={this.state.currentBot} handleLibrary={{enlist:this.addBot, back: this.toggleCurrentView}}/>
+    } else {
+      return <BotCollection bots={this.filteredBots(this.state.searchTerm)} handleClick={this.setCurrentBot} handleSearchChange={this.updateSearchTerm}/>
+    }
+  }
+  filteredBots(searchTerm) {
+    return this.state.bots.filter(bot => bot.name.toLowerCase().includes(searchTerm.toLowerCase()));
   }
 
   addBot = (bot) => {
@@ -19,16 +39,6 @@ class BotsPage extends React.Component {
     const newBots = this.state.myBots.filter(bot => bot.id !== deleteBot.id);
     this.setState({myBots:newBots});
   }
-
-  getData(url, cb) {
-    fetch(url).then(res => res.json()).then(cb);
-  }
-  componentDidMount() {
-    this.getData(
-      "https://bot-battler-api.herokuapp.com/api/v1/bots",
-      (bots) => (this.setState({bots}))
-    );
-  }
   toggleCurrentView = () => {
     let specView = !this.state.specView;
     this.setState({specView});
@@ -37,14 +47,11 @@ class BotsPage extends React.Component {
     this.setState({currentBot});
     this.toggleCurrentView();
   }
+  updateSearchTerm = (e) => {
+    this.setState({searchTerm: e.target.value}, () => console.log(this.state.searchTerm));
 
-  displayCurrentView(specsView) {
-    if (specsView) {
-      return <BotSpecs bot={this.state.currentBot} handleLibrary={{enlist:this.addBot, back: this.toggleCurrentView}}/>
-    } else {
-      return <BotCollection bots={this.state.bots} handleClick={this.setCurrentBot}/>
-    }
   }
+
 
   render() {
     return (

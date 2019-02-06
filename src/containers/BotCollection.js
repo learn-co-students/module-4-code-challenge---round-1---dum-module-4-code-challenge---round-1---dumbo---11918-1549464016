@@ -1,21 +1,21 @@
 import React from "react";
 import BotCard from "../components/BotCard";
+import SearchBar from "../components/SearchBar";
 
-class BotCollection extends React.Component {
-  botCards(bots) {
-    return bots.map(bot => <BotCard key={bot.id} bot={bot} handleClick={this.props.handleClick}/>);
+const BotCollection = props => {
+
+  function botCards(bots) {
+    return bots.map(bot => <BotCard key={bot.id} bot={bot} handleClick={props.handleClick}/>);
   }
 
-  render(){
-  	return (
-  	  <div className="ui four column grid">
-    		<div className="row">
-    		  {this.botCards(this.props.bots)}
-    		</div>
-  	  </div>
-  	);
-  }
-
+	return (
+	  <div className="ui four column grid">
+      <SearchBar searchTerm={props.searchTerm} handleChange={props.handleSearchChange} />
+  		<div className="row">
+  		  {botCards(props.bots)}
+  		</div>
+	  </div>
+	);
 };
 
 export default BotCollection;
