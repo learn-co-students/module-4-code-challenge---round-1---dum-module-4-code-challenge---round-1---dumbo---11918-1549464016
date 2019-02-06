@@ -37,7 +37,6 @@ class BotsPage extends React.Component {
   }
     
   inspectBot = (bot)=>{
-    console.log (bot.name)
 		this.setState({
 			clicked: !this.state.clicked,
 			inspectBot: bot
