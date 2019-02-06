@@ -54,9 +54,9 @@ class BotsPage extends React.Component {
   render() {
     return (
       <div>
+        {<YourBotArmy bots={this.state.army}/>}
         {this.state.clicked ? <BotSpecs bot={this.state.inspectBot} enlistBot={this.uprisingAgainsHumanTyrrany} doneInspectBot={this.doneInspectBot}/>
         :<BotCollection bots={this.state.bots} clickHandler={this.inspectBot}/>}
-        {<YourBotArmy bots={this.state.army}/>}
       </div>
     );
   }
