@@ -1,7 +1,28 @@
 import React from "react";
 
+//  botClick = (e) => {
+//     console.log("click")
+//     return this.setState({
+//         botArmy: !this.state.botArmy
+//     })
+// }
+
+// function botClick() {
+//     this.setState({
+//         botArmy: !this.state.botArmy
+//     })
+// }
+
+
+
 const BotCard = props => {
   const { bot } = props;
+    // function botClick() {
+    //     console.log("click")
+    //     return this.setState({
+    //         botArmy: !this.state.botArmy
+    //     })
+    // }
 
   let botType;
 
@@ -17,6 +38,7 @@ const BotCard = props => {
       break;
     default:
       botType = <div />;
+
   }
 
   return (
@@ -24,7 +46,7 @@ const BotCard = props => {
       <div
         className="ui card"
         key={bot.id}
-        onClick={() => console.log("add code to connect event listener")}
+        onClick={() => this.props.botClick}
       >
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />
