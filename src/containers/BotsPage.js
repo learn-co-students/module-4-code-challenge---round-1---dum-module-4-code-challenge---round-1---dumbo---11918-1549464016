@@ -1,9 +1,10 @@
 import React from "react";
 import BotCollection from "./BotCollection";
 import YourBotArmy from "./YourBotArmy";
+import BotSpecs from "../components/BotSpecs";
 
 class BotsPage extends React.Component {
-  state={bots: [], botArmy: []}
+  state={bots: [], botArmy: [], bot: ""}
 
   fetchBots() {
     return fetch(`https://bot-battler-api.herokuapp.com/api/v1/bots`)
@@ -25,6 +26,11 @@ class BotsPage extends React.Component {
     }
   }
 
+  botClick = (e, bot) => {
+    bot ? this.setState({bot: bot}) : this.setState({bot: false})
+
+  }
+
   botHolder() {
     let bots = this.state.bots
     return bots
@@ -34,7 +40,7 @@ class BotsPage extends React.Component {
     return (
       <div>
         <YourBotArmy bots={this.state.botArmy} enlistBot={this.enlistBot} />
-        <BotCollection bots={this.botHolder()} enlistBot={this.enlistBot} />
+        {this.state.bot ? <BotSpecs bot={this.state.bot} botClick={this.botClick} enlistBot={this.enlistBot}/> : <BotCollection bots={this.botHolder()} enlistBot={this.enlistBot} botClick={this.botClick} /> }
       </div>
     );
   }
