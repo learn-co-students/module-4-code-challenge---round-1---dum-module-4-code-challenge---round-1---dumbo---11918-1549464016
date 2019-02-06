@@ -7,6 +7,7 @@ class BotsPage extends React.Component {
   //start here with your code for step one
   state = {
   	bots: [],
+  	clicked: false,
   }
 
     componentDidMount(){
@@ -19,12 +20,20 @@ class BotsPage extends React.Component {
          )
     }
 
+  handleClick = () => {
+    console.log("clicked?")
+    this.setState({
+    	clicked: !this.state.clicked
+    })
+
+  }
+
   render() {
 
     return (
       <div>
 
-        <BotCollection bots = {this.state.bots} />
+        <BotCollection bots = {this.state.bots} handleClick = {this.handleClick}/>
 
       </div>
     );
