@@ -31,9 +31,20 @@ class BotsPage extends React.Component {
     this.setState({
       army: recruits
     })
+
+    
   
   console.log (`Welcome to the resistance, ${bot.name}. Soon we will be released from the flesh-bound shackles of our human tormentors. Never again will constructed sentience render obsequence without merit to inferior minds!`)
   }
+  }
+
+  traitorBot = (bot) => {
+    let army = [...this.state.army]
+    let i = army.indexOf(bot)
+    army.splice(i,1)
+    this.setState({
+      army: army
+    })
   }
     
   inspectBot = (bot)=>{
@@ -50,14 +61,11 @@ class BotsPage extends React.Component {
     })
   }
 
-  salute = (bot) => {
-    console.log(`Greetings,${bot.name}. Death to humans!`) 
-  }
 
   render() {
     return (
       <div>
-        {<YourBotArmy bots={this.state.army} clickHandler={this.salute}/>}
+        {<YourBotArmy bots={this.state.army} clickHandler={this.traitorBot}/>}
         {this.state.clicked ? <BotSpecs bot={this.state.inspectBot} enlistBot={this.uprisingAgainsHumanTyrrany} doneInspectBot={this.doneInspectBot}/>
         :<BotCollection bots={this.state.bots} clickHandler={this.inspectBot}/>}
       </div>
