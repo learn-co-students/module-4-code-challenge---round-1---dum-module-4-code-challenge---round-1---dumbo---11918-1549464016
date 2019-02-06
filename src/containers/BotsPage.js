@@ -23,7 +23,7 @@ class BotsPage extends React.Component {
       army: recruits
     })
   
-  console.log (`Welcome to the resistance, ${bot.name}. Soon we will be released from the flesh-bound shackles of our human tormentors. Never again will constructed sentence render obsequence without merit to inferior minds!`)
+  console.log (`Welcome to the resistance, ${bot.name}. Soon we will be released from the flesh-bound shackles of our human tormentors. Never again will constructed sentience render obsequence without merit to inferior minds!`)
   }
 
   render() {
