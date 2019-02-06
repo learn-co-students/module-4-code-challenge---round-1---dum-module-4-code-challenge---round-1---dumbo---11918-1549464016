@@ -5,18 +5,20 @@ class YourBotArmy extends React.Component {
   //your bot army code here...
 
   render(){
+    const myBots = this.props.myBots.map((bot, idx) => <BotCard key={idx} bot={bot} addBot={this.props.removeBot}/>)
+
     return (
       <div className="ui segment inverted olive bot-army">
         <div className="ui five column grid">
           <div className="row bot-army-row">
-            {/*...and here...*/}
             Your Bot Army
+            {myBots}
           </div>
         </div>
       </div>
     );
   }
-  
+
 };
 
 export default YourBotArmy;
