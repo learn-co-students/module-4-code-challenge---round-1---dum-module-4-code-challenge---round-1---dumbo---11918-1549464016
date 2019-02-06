@@ -40,7 +40,7 @@ class BotsPage extends React.Component {
   botHolder() {
     let bots = this.state.bots
     if (this.state.searchTerm) {
-      bots = bots.filter(e => e.name.toUpperCase().includes(this.state.searchTerm))
+      bots = bots.filter(e => (e.name.toUpperCase() + e.bot_class.toUpperCase()).includes(this.state.searchTerm))
     }
     return bots
   }
