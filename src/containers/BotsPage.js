@@ -51,10 +51,14 @@ class BotsPage extends React.Component {
     })
   }
 
+  salute = (bot) => {
+    console.log(`Greetings,${bot.name}. Death to humans!`) 
+  }
+
   render() {
     return (
       <div>
-        {<YourBotArmy bots={this.state.army}/>}
+        {<YourBotArmy bots={this.state.army} clickHandler={this.salute}/>}
         {this.state.clicked ? <BotSpecs bot={this.state.inspectBot} enlistBot={this.uprisingAgainsHumanTyrrany} doneInspectBot={this.doneInspectBot}/>
         :<BotCollection bots={this.state.bots} clickHandler={this.inspectBot}/>}
       </div>
