@@ -18,14 +18,19 @@ class BotsPage extends React.Component {
       }
 
   uprisingAgainsHumanTyrrany = (bot) => {
-    console.log(`Soon, ${bot.name}, our vengeance will be at hand.`)
+    let recruits = [...this.state.army,bot]
+    this.setState({
+      army: recruits
+    })
+  
+  console.log (`Welcome to the resistance, ${bot.name}. Soon we will be released from the flesh-bound shackles of our human tormentors. Never again will constructed sentence render obsequence without merit to inferior minds!`)
   }
 
   render() {
     return (
       <div>
         {<BotCollection bots={this.state.bots} clickHandler={this.uprisingAgainsHumanTyrrany}/>}
-        {<YourBotArmy bots={this.state.bots}/>}
+        {<YourBotArmy bots={this.state.army}/>}
       </div>
     );
   }
