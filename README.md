@@ -1,6 +1,6 @@
 # Module 4 Code Challenge: Bot Battlr
 
-Welcome to __Bot Battlr__, the one and only spot in the known universe where you can custom build your own Bot Army!
+<!-- Welcome to __Bot Battlr__, the one and only spot in the known universe where you can custom build your own Bot Army!
 
 Here's the scenario: a galactic overlord has hired you, a galactic web developer, to develop a galactic web app that will allow them to browse through a list of robots, view a robot's details, and, if the bot is to their liking, enlist that bot into their army.
 
@@ -64,7 +64,7 @@ If you have gotten this far, you have hit the checkpoint. Your app should look l
 [checkpoint]: ./public/checkpoint_demo.gif "Checkpoint demo"
 
 Before proceeding to the next part of the challenge, __be sure to stage a commit at this point__. That way if your code breaks or you do not get to finish the next feature, we will be able to see that you were able to get up to this point.
-
+ -->
 
 #### 4. Refactor
 
